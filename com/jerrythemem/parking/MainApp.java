@@ -1,8 +1,8 @@
 package com.jerrythemem.parking;
 
+import java.util.*;
+
 class MainApp {
-<<<<<<< HEAD
-=======
     
     public static void main(String[] args) {
         
@@ -48,9 +48,45 @@ class MainApp {
             } else if (command.equals("freeSpace")) {
                 System.out.println("Calculating free space...");
                 int freeSpace = 0;
->>>>>>> f902152... Minor rebuild map init
 
-    public static void main(String[] args) {
-        System.out.println("Hello World");
+                for (int carPlace = 0; carPlace < parkingPlaces; carPlace++) {
+                    if (cars.get(carPlace) == null) {
+                        freeSpace++;
+                    }
+                }
+                System.out.println("There are " + freeSpace + " free places");
+
+
+                System.out.println("Would you like to see list of parking places? (y or n)");
+                String listOfPlaces = inp.nextLine();
+                if (listOfPlaces.equals("y")) {
+                    for (int place = 0; place < parkingPlaces; place++) {
+                        System.out.println(place + " : " + cars.get(place));
+                    }
+                }
+
+
+                
+            
+            
+            
+            } else if (command.equals("leaveCar")) {
+                System.out.println("Remove car... Type car number");
+                String carNumber = inp.nextLine();
+                for (int carPlace = 0; carPlace < parkingPlaces; carPlace++) {
+                    if (carNumber.equals(cars.get(carPlace))) {
+                        cars.put(carPlace, null);
+                    }
+                }
+   
+   
+   
+            } else if (command.equals("exit")) {
+                System.out.println("Goodbye");
+                break;
+            }
+            }
+        }
+        inp.close();
     }
 }
