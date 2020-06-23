@@ -29,9 +29,9 @@ class MainApp {
                 System.out.println("Adding new car... Type car number:");
                 String carNumber = inp.nextLine();
                 for (int carPlace = 0; carPlace < cars.length; carPlace++) {
-                    System.out.println("abema");
+                    System.out.println("check1");
                     if (cars[carPlace] != null) {    
-                        System.out.println("abemaa");                   
+                        System.out.println("check2");                   
                         cars[carPlace] = carNumber;
                         break;
                     }
