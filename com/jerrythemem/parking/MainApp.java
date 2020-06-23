@@ -1,12 +1,19 @@
 package com.jerrythemem.parking;
 
-import java.util.Scanner;
+import java.util.*;
 
 class MainApp {
     
     public static void main(String[] args) {
         
-        String[] cars = new String[5];
+        int parkingPlaces = 10;
+        Map<Integer, String> cars = new HashMap<Integer, String>();
+        
+        for (int elem = 0; elem < parkingPlaces; elem++) {
+            cars.put(elem, null);
+        }
+
+        
 
         Scanner inp = new Scanner (System.in);
         System.out.println("Open parking: (y or n)");
@@ -28,11 +35,9 @@ class MainApp {
             if (command.equals("newCar")) {
                 System.out.println("Adding new car... Type car number:");
                 String carNumber = inp.nextLine();
-                for (int carPlace = 0; carPlace < cars.length; carPlace++) {
-                    System.out.println("check1");
-                    if (cars[carPlace] == null) {    
-                        System.out.println("check2");                   
-                        cars[carPlace] = carNumber;
+                for (int carPlace = 0; carPlace < parkingPlaces; carPlace++) {
+                    if (cars.get(carPlace) == null) {                       
+                        cars.put(carPlace, carNumber);
                         break;
                     }
                 }
@@ -54,12 +59,21 @@ class MainApp {
                 System.out.println("Calculating free space...");
                 int freeSpace = 0;
 
-                for (int carPlace = 0; carPlace < cars.length; carPlace++) {
-                    if (cars[carPlace] == null) {
+                for (int carPlace = 0; carPlace < parkingPlaces; carPlace++) {
+                    if (cars.get(carPlace) == null) {
                         freeSpace++;
                     }
                 }
                 System.out.println("There are " + freeSpace + " free places");
+
+
+                System.out.println("Would you like to see list of parking places? (y or n)");
+                String listOfPlaces = inp.nextLine();
+                if (listOfPlaces.equals("y")) {
+                    for (int place = 0; place < parkingPlaces; place++) {
+                        System.out.println(place + " : " + cars.get(place));
+                    }
+                }
 
 
                 
@@ -77,9 +91,9 @@ class MainApp {
             } else if (command.equals("leaveCar")) {
                 System.out.println("Remove car... Type car number");
                 String carNumber = inp.nextLine();
-                for (int carPlace = 0; carPlace < cars.length; carPlace++) {
-                    if (carNumber.equals(cars[carPlace])) {
-                        cars[carPlace] = null;
+                for (int carPlace = 0; carPlace < parkingPlaces; carPlace++) {
+                    if (carNumber.equals(cars.get(carPlace))) {
+                        cars.put(carPlace, null);
                     }
                 }
 
