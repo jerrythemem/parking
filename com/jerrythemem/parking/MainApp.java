@@ -30,7 +30,7 @@ class MainApp {
                 String carNumber = inp.nextLine();
                 for (int carPlace = 0; carPlace < cars.length; carPlace++) {
                     System.out.println("check1");
-                    if (cars[carPlace] != null) {    
+                    if (cars[carPlace] == null) {    
                         System.out.println("check2");                   
                         cars[carPlace] = carNumber;
                         break;
