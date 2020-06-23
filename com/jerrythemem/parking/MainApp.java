@@ -7,7 +7,7 @@ class MainApp {
     public static void main(String[] args) {
         
         int parkingPlaces = 10;
-        Map<Integer, String> cars = new HashMap<Integer, String>();
+        var cars = new HashMap<Integer, String>();
         
         for (int elem = 0; elem < parkingPlaces; elem++) {
             cars.put(elem, null);
