@@ -26,8 +26,7 @@ class MainApp {
         } else if (open.equals("y")) {
             
             while (true) {
-            System.out.println("Continue");
-            System.out.println("Choose command: newCar, freeSpace, leaveCar");
+            System.out.println("Choose command: newCar, freeSpace, leaveCar, exit");
             String command = inp.nextLine();
             
             
@@ -43,15 +42,6 @@ class MainApp {
                 }
 
 
-
-
-                System.out.println("Close parking? (y or n)");
-                String closing = inp.nextLine();
-                if (closing.equals("y")) {
-                    break;
-                } else if (closing.equals("n")) {
-                    continue;
-                }
             
             
             
@@ -77,14 +67,6 @@ class MainApp {
 
 
                 
-
-                System.out.println("Close parking? (y or n)");
-                String closing = inp.nextLine();
-                if (closing.equals("y")) {
-                    break;
-                } else if (closing.equals("n")) {
-                    continue;
-                }
             
             
             
@@ -96,16 +78,12 @@ class MainApp {
                         cars.put(carPlace, null);
                     }
                 }
-
-
-
-                System.out.println("Close parking? (y or n)");
-                String closing = inp.nextLine();
-                if (closing.equals("y")) {
-                    break;
-                } else if (closing.equals("n")) {
-                    continue;
-                }
+   
+   
+   
+            } else if (command.equals("exit")) {
+                System.out.println("Goodbye");
+                break;
             }
             }
         }
