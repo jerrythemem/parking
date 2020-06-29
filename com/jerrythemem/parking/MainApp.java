@@ -3,90 +3,66 @@ package com.jerrythemem.parking;
 import java.util.*;
 
 class MainApp {
-    
-    public static void main(String[] args) {
-        
-        int parkingPlaces = 10;
-        var cars = new HashMap<Integer, String>();
-        
-        for (int elem = 0; elem < parkingPlaces; elem++) {
-            cars.put(elem, null);
-        }
+    public static void main(String[] args){
+        Scanner inp = new Scanner(System.in);
+        Scanner inpLine = new Scanner(System.in);
 
-        
+        System.out.println("Hi, please type number of parking places: ");
+        int parkingPlaces = inp.nextInt();
+        Parking.myParking(parkingPlaces);
 
-        Scanner inp = new Scanner (System.in);
-        System.out.println("Open parking: (y or n)");
-        String open = inp.nextLine();
-        
-        if (open.equals("n")) {
-            System.out.println("See you next time");
-        
-        
-        } else if (open.equals("y")) {
-            
-            while (true) {
-            System.out.println("Choose command: newCar, freeSpace, leaveCar, exit");
-            String command = inp.nextLine();
-            
-            
-            
-            if (command.equals("newCar")) {
-                System.out.println("Adding new car... Type car number:");
-                String carNumber = inp.nextLine();
-                for (int carPlace = 0; carPlace < parkingPlaces; carPlace++) {
-                    if (cars.get(carPlace) == null) {                       
-                        cars.put(carPlace, carNumber);
-                        break;
-                    }
-                }
+        System.out.println("Opening parking... For list of commands type 'help' ");
+        String command = inpLine.nextLine();
 
+        while (true) {
+            
 
-            
-            
-            
+            if (command.equals("help")) {
+                System.out.println("newCar - write your car in list");
+                System.out.println("addCar - add your car in parking place");
+                System.out.println("freeSpace - show you count of free space");
+                System.out.println("removeCar - remove car from parking");
+                System.out.println("exit - close parking");
+                System.out.println("listOfCars - shows active cars");
+        
+        
+            } else if (command.equals("newCar")) {
+                System.out.println("Enter your car number and name, separated by enter");
+                String carNumber = inpLine.nextLine();
+                String name = inpLine.nextLine();
+                Car.newCar(carNumber, name);
+        
+        
+            } else if (command.equals("addCar")) {
+                System.out.println("Enter your car number");
+                String carNumber = inpLine.nextLine();
+                Parking.addCar(carNumber, parkingPlaces);
+        
+        
             } else if (command.equals("freeSpace")) {
-                System.out.println("Calculating free space...");
-                int freeSpace = 0;
-
-                for (int carPlace = 0; carPlace < parkingPlaces; carPlace++) {
-                    if (cars.get(carPlace) == null) {
-                        freeSpace++;
-                    }
-                }
-                System.out.println("There are " + freeSpace + " free places");
-
-
-                System.out.println("Would you like to see list of parking places? (y or n)");
-                String listOfPlaces = inp.nextLine();
-                if (listOfPlaces.equals("y")) {
-                    for (int place = 0; place < parkingPlaces; place++) {
-                        System.out.println(place + " : " + cars.get(place));
-                    }
-                }
-
-
-                
-            
-            
-            
-            } else if (command.equals("leaveCar")) {
-                System.out.println("Remove car... Type car number");
-                String carNumber = inp.nextLine();
-                for (int carPlace = 0; carPlace < parkingPlaces; carPlace++) {
-                    if (carNumber.equals(cars.get(carPlace))) {
-                        cars.put(carPlace, null);
-                    }
-                }
-   
-   
-   
+                Parking.freeSpace(parkingPlaces);
+        
+        
+            } else if (command.equals("removeCar")) {
+                System.out.println("Enter your car number");
+                String carNumber = inpLine.nextLine();
+                Parking.removeCar(carNumber, parkingPlaces);
+        
+        
             } else if (command.equals("exit")) {
-                System.out.println("Goodbye");
+                System.out.println("Thanks for work");
                 break;
+            
+            
+            } else if (command.equals("listOfCars")) {
+                Car.listOfCars();
             }
-            }
+            
+            System.out.println("What's next?");
+            command = inpLine.nextLine();
         }
+
+        inpLine.close();
         inp.close();
     }
 }
