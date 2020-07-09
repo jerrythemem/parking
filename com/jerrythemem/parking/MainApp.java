@@ -8,60 +8,61 @@ class MainApp {
         Scanner inpLine = new Scanner(System.in);
 
         System.out.println("Hi, please type number of parking places: ");
-        int parkingPlaces = inp.nextInt();
-        Parking.myParking(parkingPlaces);
+        int myPlaces = inp.nextInt();
+        Parking myParking = new Parking();
+        myParking.parkingPlaces = myPlaces;
+        myParking.newParking();
 
-        System.out.println("Opening parking... For list of commands type 'help' ");
-        String command = inpLine.nextLine();
-
+        System.out.println("Enter a command (for list of commands type 'help')");
         while (true) {
-            
+            String command = inpLine.nextLine();
 
             if (command.equals("help")) {
-                System.out.println("newCar - write your car in list");
-                System.out.println("addCar - add your car in parking place");
-                System.out.println("freeSpace - show you count of free space");
-                System.out.println("removeCar - remove car from parking");
-                System.out.println("exit - close parking");
-                System.out.println("listOfCars - shows active cars");
-        
-        
-            } else if (command.equals("newCar")) {
-                System.out.println("Enter your car number and name, separated by enter");
-                String carNumber = inpLine.nextLine();
+                System.out.println("addCar - make new car and add to parking");
+                System.out.println("freeSpace - calculate free space in parking");
+                System.out.println("removeCar - removes car from parking");
+                System.out.println("listOfCars - displays currnet cars in parking");
+            }
+                
+            if (command.equals("addCar")) {
+                Car newCar = new Car(); 
+                System.out.println("Enter car number and owner name separated by enter");
+                String number = inpLine.nextLine();
+                newCar.carNumber = number;
                 String name = inpLine.nextLine();
-                Car.newCar(carNumber, name);
-        
-        
-            } else if (command.equals("addCar")) {
-                System.out.println("Enter your car number");
-                String carNumber = inpLine.nextLine();
-                Parking.addCar(carNumber, parkingPlaces);
-        
-        
+                newCar.ownerName = name;
+                myParking.addCar(newCar.carNumber);
+                myParking.carList.put(name, number);
+                
+                
             } else if (command.equals("freeSpace")) {
-                Parking.freeSpace(parkingPlaces);
-        
-        
+                myParking.freeSpace();
+                
+                
             } else if (command.equals("removeCar")) {
-                System.out.println("Enter your car number");
-                String carNumber = inpLine.nextLine();
-                Parking.removeCar(carNumber, parkingPlaces);
-        
-        
-            } else if (command.equals("exit")) {
+                System.out.println("Here are current cars in parking: ");
+                myParking.currentCars();
+                System.out.println("Enter a car number");
+                String number = inpLine.nextLine();
+                myParking.removeCar(number);
+                
+                
+            } else if (command.equals("listOfCars")) {
+                myParking.listOfCars();
+                
+                
+            } else if (command.equals("close")) {
                 System.out.println("Thanks for work");
                 break;
-            
-            
-            } else if (command.equals("listOfCars")) {
-                Car.listOfCars();
+            } else {
+                System.out.println("Sorry, wrong command");
             }
-            
-            System.out.println("What's next?");
-            command = inpLine.nextLine();
+
+
+            System.out.println("\nWhat's next?");
         }
 
+        
         inpLine.close();
         inp.close();
     }

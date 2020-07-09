@@ -2,27 +2,24 @@ package com.jerrythemem.parking;
 
 import java.util.*;
 
-/*ПАРКОВКА:
-    Парковочные места (+ названия) - complete
-    Взаимодействие с машинами*/
 public class Parking {
-    public static HashMap<String, String> carPlaces = new HashMap<String, String>();
 
-    public static void myParking(int parkingPlaces) {
+    public HashMap<Integer, String> carPlaces = new HashMap<Integer, String>();
+    public HashMap<String, String> carList = new HashMap<String, String>(); 
+
+    int parkingPlaces = 0;
+
+    public void newParking() {
         for (int place = 0; place < parkingPlaces; place++) {
-            String placeString = Integer.toString(place);
-            placeString = "PP" + placeString;
-            carPlaces.put(placeString, null);
+            carPlaces.put(place, null);
         }   
     }
 
 
-    public static void addCar(String carNumber, int parkingPlaces) {
+    public void addCar(String carNumber) {
         for (int place = 0; place < parkingPlaces; place++) {
-            String placeString = Integer.toString(place);
-            placeString = "PP" + placeString;
-            if (carPlaces.get(placeString) == null) {                  
-                carPlaces.put(placeString, carNumber);
+            if (carPlaces.get(place) == null) {                  
+                carPlaces.put(place, carNumber);
                 break;
             }
         }
@@ -30,13 +27,11 @@ public class Parking {
     }
 
 
-    public static void freeSpace(int parkingPlaces){
+    public void freeSpace(){
         int freeSpace = 0;
 
         for (int place = 0; place < parkingPlaces; place++) {
-            String placeString = Integer.toString(place);
-            placeString = "PP" + placeString;
-            if (carPlaces.get(placeString) == null) {
+            if (carPlaces.get(place) == null) {
                 freeSpace++;
             }
         }
@@ -44,14 +39,27 @@ public class Parking {
     }
 
 
-    public static void removeCar(String carNumber, int parkingPlaces){
+    public void removeCar(String carNumber){
         for (int place = 0; place < parkingPlaces; place++) {
-            String placeString = Integer.toString(place);
-            placeString = "PP" + placeString;
-            if (carNumber.equals(carPlaces.get(placeString))) {
-                carPlaces.put(placeString, null);
+            if (carNumber.equals(carPlaces.get(place))) {
+                carPlaces.put(place, null);
             }
         }
         System.out.println("Thanks for visiting");
+    }
+
+    public void listOfCars() {
+        for(int place = 0; place < parkingPlaces; place++) {
+            if (carPlaces.get(place) != null) {
+                String placeString = Integer.toString(place);
+                System.out.println(placeString + " - " + carPlaces.get(place));
+            }
+        }
+    }
+
+    public void currentCars() {
+        for (var key : carList.keySet()) {
+            System.out.println(key + " - " + carList.get(key));
+        }
     }
 }
