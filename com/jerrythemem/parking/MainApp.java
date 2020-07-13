@@ -9,6 +9,13 @@ class MainApp {
 
         System.out.println("Hi, please type number of parking places: ");
         int myPlaces = inp.nextInt();
+
+        // You are not using constructor properly (see OOP)
+        // Constructor should initialize all variables that are required for class to do its job -
+        // here obviously without parking places amount Parking cannot work at all
+        // so better to move it into constructor. Other issue - if some idiot after you initialized
+        // the parking places amount will execute something like myParking.parkingPlaces = 666;
+        // Quite a lot of things will break :)
         Parking myParking = new Parking();
         myParking.parkingPlaces = myPlaces;
         myParking.newParking();
