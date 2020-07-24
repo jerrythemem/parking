@@ -4,10 +4,16 @@ import java.util.*;
 
 public class Parking {
 
-    public HashMap<Integer, String> carPlaces = new HashMap<Integer, String>();
-    public HashMap<String, String> carList = new HashMap<String, String>(); 
+    private int parkingPlaces;
+    private HashMap<Integer, String> carPlaces;
+    HashMap<String, String> carList;
+    
+    public Parking(int places) {
+        parkingPlaces = places;
+        carPlaces = new HashMap<>();
+        carList = new HashMap<>();
+    }
 
-    int parkingPlaces = 0;
 
     public void newParking() {
         for (int place = 0; place < parkingPlaces; place++) {

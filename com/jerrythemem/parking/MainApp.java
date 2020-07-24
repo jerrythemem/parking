@@ -9,8 +9,7 @@ class MainApp {
 
         System.out.println("Hi, please type number of parking places: ");
         int myPlaces = inp.nextInt();
-        Parking myParking = new Parking();
-        myParking.parkingPlaces = myPlaces;
+        Parking myParking = new Parking(myPlaces);
         myParking.newParking();
 
         System.out.println("Enter a command (for list of commands type 'help')");
@@ -22,16 +21,15 @@ class MainApp {
                 System.out.println("freeSpace - calculate free space in parking");
                 System.out.println("removeCar - removes car from parking");
                 System.out.println("listOfCars - displays currnet cars in parking");
-            }
-                
-            if (command.equals("addCar")) {
-                Car newCar = new Car(); 
+                System.out.println("close - close parking");
+            
+            
+            } else if (command.equals("addCar")) {
                 System.out.println("Enter car number and owner name separated by enter");
                 String number = inpLine.nextLine();
-                newCar.carNumber = number;
                 String name = inpLine.nextLine();
-                newCar.ownerName = name;
-                myParking.addCar(newCar.carNumber);
+                CarSlot newCar = new CarSlot(number, name);
+                myParking.addCar(newCar.getCar().carNumber);
                 myParking.carList.put(name, number);
                 
                 
@@ -54,6 +52,8 @@ class MainApp {
             } else if (command.equals("close")) {
                 System.out.println("Thanks for work");
                 break;
+            
+            
             } else {
                 System.out.println("Sorry, wrong command");
             }
