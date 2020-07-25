@@ -27,4 +27,12 @@ public class CarSlot {
     public void setCar(Car car) {
         this.car = car;
     }
+
+    public String getCarNumberSlot() {
+        return car.getCarNumber();
+    }
+
+    public String getOwnerNameSlot() {
+        return car.getOwnerName();
+    }
 }

@@ -29,8 +29,8 @@ class MainApp {
                 String number = inpLine.nextLine();
                 String name = inpLine.nextLine();
                 CarSlot newCar = new CarSlot(number, name);
-                myParking.addCar(newCar.getCar().carNumber);
-                myParking.carList.put(name, number);
+                myParking.addCar(newCar.getCarNumberSlot());
+                myParking.addCarToList(name, number);
                 
                 
             } else if (command.equals("freeSpace")) {

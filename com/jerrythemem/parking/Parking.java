@@ -6,12 +6,16 @@ public class Parking {
 
     private int parkingPlaces;
     private HashMap<Integer, String> carPlaces;
-    HashMap<String, String> carList;
+    private HashMap<String, String> carList;
     
     public Parking(int places) {
         parkingPlaces = places;
         carPlaces = new HashMap<>();
         carList = new HashMap<>();
+    }
+
+    public void addCarToList(String name, String number) {
+        carList.put(name, number);
     }
 
 
