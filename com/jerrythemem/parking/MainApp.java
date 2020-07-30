@@ -1,6 +1,5 @@
 package com.jerrythemem.parking;
 
-import java.time.LocalTime;
 import java.util.*;
 
 class MainApp {
@@ -28,7 +27,7 @@ class MainApp {
                 System.out.println("Enter car number and owner name separated by enter");
                 String number = inpLine.nextLine();
                 String name = inpLine.nextLine();
-                CarSlot newCar = new CarSlot(number, name, LocalTime.now());
+                Car newCar = new Car(number, name);
                 myParking.addCar(newCar);
                 
                 

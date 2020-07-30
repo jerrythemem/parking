@@ -24,9 +24,12 @@ public class CarSlot {
         return car;
     }
 
-    /*
-    Here you are not initalizing the occupiedSince...
-     */
+    
+    public void setOccupiedSince(LocalTime time) {
+        occupiedSince = time;
+    }
+
+
     public void setCar(Car car) {
         this.car = car;
     }

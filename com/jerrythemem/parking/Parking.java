@@ -1,33 +1,27 @@
 package com.jerrythemem.parking;
 
+import java.time.LocalTime;
 import java.util.*;
 
 public class Parking {
-/*
- why is this variable needed?
- */
-    private int parkingPlaces;
+
     private ArrayList<CarSlot> carList;
     
     public Parking(int places) {
-        parkingPlaces = places;
         carList = new ArrayList<>();
         
-        for (int place = 0; place < parkingPlaces; place++) {
-            carList.add(null);
+        for (int place = 0; place < places; place++) {
+            carList.add(new CarSlot("x", "x", LocalTime.now()));
         }
     }
 
-    /*
-    this is actual "external" API for parking - and you should not expose slots, cause this is already your implementation details.
-    it should accept Car object as parameter.
-     */
-    public void addCar(CarSlot newCar) {
+    
+    public void addCar(Car newCar) {
         int place = 0;
 
-        for (var car : carList) {
-            if (car == null) {                  
-                carList.set(place, newCar);
+        for (var slot : carList) {
+            if (slot.getCarNumberSlot().equals("x")) {                  
+                carList.set(place, new CarSlot(newCar.getCarNumber(), newCar.getOwnerName(), LocalTime.now()));
                 break;
             }
 
@@ -40,13 +34,8 @@ public class Parking {
     public void freeSpace(){
         int freeSpace = 0;
 
-        /*
-        carList means that this lists contains cars, but it contains slots.
-        same goes for "var car" - All names should correspond to the actual model you store
-
-         */
-        for (var car : carList) {
-            if (car == null) {
+        for (var slot : carList) {
+            if (slot.getCarNumberSlot().equals("x")) {
                 freeSpace++;
             }
         }
@@ -57,10 +46,10 @@ public class Parking {
     public void removeCar(String carNumber){
         int place = 0;
 
-        for (var car : carList) {
-            if (car != null) {
-                if (carNumber.equals(car.getCarNumberSlot())) {
-                    carList.set(place, null);
+        for (var slot : carList) {
+            if (!(slot.getCarNumberSlot().equals("x"))) {
+                if (carNumber.equals(slot.getCarNumberSlot())) {
+                    carList.set(place, new CarSlot("x", "x", LocalTime.now()));
                 }
             }
 
@@ -72,8 +61,8 @@ public class Parking {
     public void listOfCars() {
         int place = 0;
 
-        for (var car : carList) {
-            if (car != null) {
+        for (var slot : carList) {
+            if (!(slot.getCarNumberSlot().equals("x"))) {
                 String placeString = Integer.toString(place);
                 System.out.println(placeString + " - " + carList.get(place).getCarNumberSlot() + ", " + carList.get(place).getOwnerNameSlot());
             }
@@ -83,9 +72,9 @@ public class Parking {
     }
 
     public void currentCars() {
-        for (var car : carList) {
-            if (car != null) {
-                System.out.println(car.getCarNumberSlot() + " - " + car.getOwnerNameSlot() + " - " + car.getOccupiedSince());
+        for (var slot : carList) {
+            if (!(slot.getCarNumberSlot().equals("x"))) {
+                System.out.println(slot.getCarNumberSlot() + " - " + slot.getOwnerNameSlot() + " - " + slot.getOccupiedSince());
             }
         }
     }
