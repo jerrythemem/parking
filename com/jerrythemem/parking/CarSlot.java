@@ -1,32 +1,24 @@
 package com.jerrythemem.parking;
 
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 
 public class CarSlot {
 
     private Car car;
     private LocalTime occupiedSince;
 
-    public CarSlot(String newCarNumber, String newOwnerName) {
+    public CarSlot(String newCarNumber, String newOwnerName, LocalTime newOccupiedSince) {
         setCar(new Car(newCarNumber, newOwnerName));
-        setOccupiedSince(occupiedSince);
+        occupiedSince = newOccupiedSince;
     }
 
-    /*
-    What exactly are you trying to do here? by the method name I can guess that you can generally return the occupiedSince....
-     */
-    public LocalTime getOccupiedSince() {
-        LocalTime occupiedTime = LocalTime.now().minusHours(occupiedSince.getHour()).minusMinutes(occupiedSince.getMinute()).
-        minusSeconds(occupiedSince.getSecond()).minusNanos(occupiedSince.getNano());
+
+    public long getOccupiedSince() {
+        long occupiedTime = ChronoUnit.MINUTES.between(occupiedSince, LocalTime.now());
         return occupiedTime;
     }
-/*
-Why to set occupiedSince separately? when you are assigning the car to this slot, you can initialize it at same time
 
- */
-    public void setOccupiedSince(LocalTime occupiedSince) {
-        this.occupiedSince = occupiedSince;
-    }
 
     public Car getCar() {
         return car;

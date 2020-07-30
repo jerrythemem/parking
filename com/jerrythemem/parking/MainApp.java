@@ -29,11 +29,8 @@ class MainApp {
                 System.out.println("Enter car number and owner name separated by enter");
                 String number = inpLine.nextLine();
                 String name = inpLine.nextLine();
-                CarSlot newCar = new CarSlot(number, name);
+                CarSlot newCar = new CarSlot(number, name, LocalTime.now());
                 myParking.addCar(newCar);
-
-                newCar.setOccupiedSince(LocalTime.now());
-                System.out.println(newCar.getOccupiedSince());
                 
                 
             } else if (command.equals("freeSpace")) {
