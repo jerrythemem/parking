@@ -30,8 +30,7 @@ class MainApp {
                 String number = inpLine.nextLine();
                 String name = inpLine.nextLine();
                 CarSlot newCar = new CarSlot(number, name);
-                myParking.addCar(newCar.getCarNumberSlot());
-                myParking.addCarToList(newCar);
+                myParking.addCar(newCar);
 
                 newCar.setOccupiedSince(LocalTime.now());
                 System.out.println(newCar.getOccupiedSince());
