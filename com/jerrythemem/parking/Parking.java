@@ -3,7 +3,9 @@ package com.jerrythemem.parking;
 import java.util.*;
 
 public class Parking {
-
+/*
+ why is this variable needed?
+ */
     private int parkingPlaces;
     private ArrayList<CarSlot> carList;
     
@@ -16,7 +18,10 @@ public class Parking {
         }
     }
 
-
+    /*
+    this is actual "external" API for parking - and you should not expose slots, cause this is already your implementation details.
+    it should accept Car object as parameter.
+     */
     public void addCar(CarSlot newCar) {
         int place = 0;
 
@@ -35,6 +40,11 @@ public class Parking {
     public void freeSpace(){
         int freeSpace = 0;
 
+        /*
+        carList means that this lists contains cars, but it contains slots.
+        same goes for "var car" - All names should correspond to the actual model you store
+
+         */
         for (var car : carList) {
             if (car == null) {
                 freeSpace++;
