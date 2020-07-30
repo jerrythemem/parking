@@ -10,10 +10,7 @@ public class Parking {
     public Parking(int places) {
         parkingPlaces = places;
         carList = new ArrayList<>();
-    }
-
-
-    public void newParking() {
+        
         for (int place = 0; place < parkingPlaces; place++) {
             carList.add(null);
         }

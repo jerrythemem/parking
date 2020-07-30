@@ -11,7 +11,6 @@ class MainApp {
         System.out.println("Hi, please type number of parking places: ");
         int myPlaces = inp.nextInt();
         Parking myParking = new Parking(myPlaces);
-        myParking.newParking();
 
         System.out.println("Enter a command (for list of commands type 'help')");
         while (true) {
