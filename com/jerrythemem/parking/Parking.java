@@ -11,7 +11,7 @@ public class Parking {
         carList = new ArrayList<>();
         
         for (int place = 0; place < places; place++) {
-            carList.add(new CarSlot("x", "x", LocalTime.now()));
+            carList.add(new CarSlot(null, null, null));
         }
     }
 
@@ -20,7 +20,7 @@ public class Parking {
         int place = 0;
 
         for (var slot : carList) {
-            if (slot.getCarNumberSlot().equals("x")) {                  
+            if (slot.getCar() == null) {                  
                 carList.set(place, new CarSlot(newCar.getCarNumber(), newCar.getOwnerName(), LocalTime.now()));
                 break;
             }
@@ -35,7 +35,7 @@ public class Parking {
         int freeSpace = 0;
 
         for (var slot : carList) {
-            if (slot.getCarNumberSlot().equals("x")) {
+            if (slot.getCar() == null) {
                 freeSpace++;
             }
         }
@@ -44,16 +44,13 @@ public class Parking {
 
 
     public void removeCar(String carNumber){
-        int place = 0;
 
         for (var slot : carList) {
-            if (!(slot.getCarNumberSlot().equals("x"))) {
+            if (slot.getCar() != null) {
                 if (carNumber.equals(slot.getCarNumberSlot())) {
-                    carList.set(place, new CarSlot("x", "x", LocalTime.now()));
+                    slot.setCar(null);
                 }
             }
-
-            place++;
         }
         System.out.println("Thanks for visiting");
     }
@@ -62,9 +59,9 @@ public class Parking {
         int place = 0;
 
         for (var slot : carList) {
-            if (!(slot.getCarNumberSlot().equals("x"))) {
+            if (slot.getCar() != null) {
                 String placeString = Integer.toString(place);
-                System.out.println(placeString + " - " + carList.get(place).getCarNumberSlot() + ", " + carList.get(place).getOwnerNameSlot());
+                System.out.println(placeString + " - " + slot.getCar().getCarNumber() + ", " + slot.getCar().getOwnerName());
             }
             
             place++;
@@ -73,7 +70,7 @@ public class Parking {
 
     public void currentCars() {
         for (var slot : carList) {
-            if (!(slot.getCarNumberSlot().equals("x"))) {
+            if (slot.getCar() != null) {
                 System.out.println(slot.getCarNumberSlot() + " - " + slot.getOwnerNameSlot() + " - " + slot.getOccupiedSince());
             }
         }

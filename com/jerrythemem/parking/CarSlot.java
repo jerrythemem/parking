@@ -9,7 +9,9 @@ public class CarSlot {
     private LocalTime occupiedSince;
 
     public CarSlot(String newCarNumber, String newOwnerName, LocalTime newOccupiedSince) {
-        setCar(new Car(newCarNumber, newOwnerName));
+        if (newCarNumber != null && newOwnerName != null) {
+            setCar(new Car(newCarNumber, newOwnerName));
+        }
         occupiedSince = newOccupiedSince;
     }
 
@@ -26,12 +28,17 @@ public class CarSlot {
 
     
     public void setOccupiedSince(LocalTime time) {
-        occupiedSince = time;
+        this.occupiedSince = time;
     }
 
 
     public void setCar(Car car) {
         this.car = car;
+        this.occupiedSince = LocalTime.now();
+
+        if (car == null) {
+            this.occupiedSince = null;
+        }
     }
 
     public String getCarNumberSlot() {
