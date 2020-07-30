@@ -6,16 +6,16 @@ public class Parking {
 
     private int parkingPlaces;
     private HashMap<Integer, String> carPlaces;
-    private HashMap<String, String> carList;
+    private ArrayList<CarSlot> carList;
     
     public Parking(int places) {
         parkingPlaces = places;
         carPlaces = new HashMap<>();
-        carList = new HashMap<>();
+        carList = new ArrayList<>();
     }
 
-    public void addCarToList(String name, String number) {
-        carList.put(name, number);
+    public void addCarToList(CarSlot car) {
+        carList.add(car);
     }
 
 
@@ -60,16 +60,18 @@ public class Parking {
 
     public void listOfCars() {
         for(int place = 0; place < parkingPlaces; place++) {
-            if (carPlaces.get(place) != null) {
-                String placeString = Integer.toString(place);
-                System.out.println(placeString + " - " + carPlaces.get(place));
+            for (var car : carList) {
+                if (carPlaces.get(place) != null) {
+                    String placeString = Integer.toString(place);
+                    System.out.println(placeString + " - " + carPlaces.get(place) + ", " + car.getOwnerNameSlot());
+                }
             }
         }
     }
 
     public void currentCars() {
-        for (var key : carList.keySet()) {
-            System.out.println(key + " - " + carList.get(key));
+        for (var car : carList) {
+            System.out.println(car.getCarNumberSlot() + " - " + car.getOwnerNameSlot() + " - " + car.getOccupiedSince());
         }
     }
 }

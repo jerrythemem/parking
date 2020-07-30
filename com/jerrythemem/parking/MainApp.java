@@ -1,5 +1,6 @@
 package com.jerrythemem.parking;
 
+import java.time.LocalTime;
 import java.util.*;
 
 class MainApp {
@@ -30,7 +31,10 @@ class MainApp {
                 String name = inpLine.nextLine();
                 CarSlot newCar = new CarSlot(number, name);
                 myParking.addCar(newCar.getCarNumberSlot());
-                myParking.addCarToList(name, number);
+                myParking.addCarToList(newCar);
+
+                newCar.setOccupiedSince(LocalTime.now());
+                System.out.println(newCar.getOccupiedSince());
                 
                 
             } else if (command.equals("freeSpace")) {

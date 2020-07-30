@@ -1,5 +1,7 @@
 package com.jerrythemem.parking;
+
 public class Car {
+    
     private String carNumber;
     private String ownerName;
 
