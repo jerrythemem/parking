@@ -8,6 +8,10 @@ public class CarSlot {
     private Car car;
     private LocalTime occupiedSince;
 
+    public CarSlot() {
+        
+    }
+
     public CarSlot(String newCarNumber, String newOwnerName, LocalTime newOccupiedSince) {
         if (newCarNumber != null && newOwnerName != null) {
             setCar(new Car(newCarNumber, newOwnerName));
@@ -24,13 +28,6 @@ public class CarSlot {
 
     public Car getCar() {
         return car;
-    }
-
-    /*
-        unused methods should not be in a code...
-     */
-    public void setOccupiedSince(LocalTime time) {
-        this.occupiedSince = time;
     }
 
 

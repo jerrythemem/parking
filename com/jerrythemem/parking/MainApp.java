@@ -29,22 +29,24 @@ class MainApp {
                 String name = inpLine.nextLine();
                 Car newCar = new Car(number, name);
                 myParking.addCar(newCar);
+                System.out.println("Car added");
                 
                 
             } else if (command.equals("freeSpace")) {
-                myParking.freeSpace();
+                System.out.println(myParking.freeSpace());
                 
                 
             } else if (command.equals("removeCar")) {
                 System.out.println("Here are current cars in parking: ");
-                myParking.currentCars();
+                System.out.println(myParking.currentCars());
                 System.out.println("Enter a car number");
                 String number = inpLine.nextLine();
                 myParking.removeCar(number);
+                System.out.println("Thanks for visiting");
                 
                 
             } else if (command.equals("listOfCars")) {
-                myParking.listOfCars();
+                System.out.println(myParking.listOfCars());
                 
                 
             } else if (command.equals("close")) {
