@@ -46,6 +46,7 @@ class MainApp {
             
             
             } else if (command.equals("freeSpace")) {
+<<<<<<< HEAD
                 System.out.println("Calculating free space...");
                 int freeSpace = 0;
 
@@ -66,6 +67,33 @@ class MainApp {
                 }
 
 
+=======
+                System.out.println(myParking.freeSpace());
+                
+                
+            } else if (command.equals("removeCar")) {
+                if (myParking.currentCars() == "There are no cars in parking") {
+                    System.out.println("There are no cars in parking");
+                
+                } else {
+                    System.out.println("Here are current cars in parking: ");
+                    System.out.println(myParking.currentCars());
+
+                    System.out.println("Enter a car number");
+                    String number = inpLine.nextLine();
+
+                    if (myParking.removeCar(number)) {
+                        System.out.println("Thanks for visiting");
+                    } else {
+                        System.out.println("There are no cars with this car number");
+                    }
+                }
+                
+                
+            } else if (command.equals("listOfCars")) {
+                System.out.println(myParking.listOfCars());
+                
+>>>>>>> c23248d... Add input number detection and blank list of cars check
                 
             
             
