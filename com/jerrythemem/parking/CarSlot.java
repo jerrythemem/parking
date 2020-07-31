@@ -26,7 +26,9 @@ public class CarSlot {
         return car;
     }
 
-    
+    /*
+        unused methods should not be in a code...
+     */
     public void setOccupiedSince(LocalTime time) {
         this.occupiedSince = time;
     }

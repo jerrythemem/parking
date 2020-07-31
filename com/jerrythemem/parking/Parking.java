@@ -11,6 +11,9 @@ public class Parking {
         carList = new ArrayList<>();
         
         for (int place = 0; place < places; place++) {
+            /*
+            you can add constructor without arguments not to write null,null,null
+             */
             carList.add(new CarSlot(null, null, null));
         }
     }
@@ -20,13 +23,21 @@ public class Parking {
         int place = 0;
 
         for (var slot : carList) {
-            if (slot.getCar() == null) {                  
+            if (slot.getCar() == null) {
+                /**
+                 * whyyyyyy?
+                 * yesterday we discussed that it is not necessary to REPLACE slot every time you park a car. you
+                 * should just use setCar
+                 */
                 carList.set(place, new CarSlot(newCar.getCarNumber(), newCar.getOwnerName(), LocalTime.now()));
                 break;
             }
 
             place++;
         }
+        /*
+            notifying user should be done by application (MainApp), not the parking
+         */
         System.out.println("Car added");
     }
 
@@ -48,6 +59,9 @@ public class Parking {
         for (var slot : carList) {
             if (slot.getCar() != null) {
                 if (carNumber.equals(slot.getCarNumberSlot())) {
+                    /*
+                    right, why here you did it correctly, just by nullify-ing car on slot, and on parking you did what you did?
+                     */
                     slot.setCar(null);
                 }
             }
@@ -61,6 +75,9 @@ public class Parking {
         for (var slot : carList) {
             if (slot.getCar() != null) {
                 String placeString = Integer.toString(place);
+                /*
+                    notifying user should be done by application (MainApp), not the parking
+                 */
                 System.out.println(placeString + " - " + slot.getCar().getCarNumber() + ", " + slot.getCar().getOwnerName());
             }
             
@@ -71,6 +88,9 @@ public class Parking {
     public void currentCars() {
         for (var slot : carList) {
             if (slot.getCar() != null) {
+                /*
+                    notifying user should be done by application (MainApp), not the parking
+                 */
                 System.out.println(slot.getCarNumberSlot() + " - " + slot.getOwnerNameSlot() + " - " + slot.getOccupiedSince());
             }
         }
