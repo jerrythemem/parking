@@ -38,15 +38,19 @@ public class Parking {
     }
 
 
-    public void removeCar(String carNumber){
+    public boolean removeCar(String carNumber){
+        boolean remove = false;
 
         for (var slot : carList) {
             if (slot.getCar() != null) {
                 if (carNumber.equals(slot.getCarNumberSlot())) {
                     slot.setCar(null);
+                    remove = true;
                 }
             }
         }
+
+        return remove;
     }
 
     public String listOfCars() {
@@ -61,7 +65,12 @@ public class Parking {
             
             place++;
         }
-        return condition;
+
+        if (condition != "") {
+            return condition;
+        } else {
+            return "There are no cars in parking";
+        }
     }
 
     public String currentCars() {
@@ -73,6 +82,10 @@ public class Parking {
             }
         }
 
-        return condition;
+        if (condition != "") {
+            return condition;
+        } else {
+            return "There are no cars in parking";
+        }
     }
 }
