@@ -3,3 +3,4 @@ parkingIdea.iml
 out/*
 .gitignore
 .vscode/*
+target/*

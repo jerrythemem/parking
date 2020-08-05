@@ -12,7 +12,8 @@ class MainApp {
         Parking myParking = new Parking(myPlaces);
 
         System.out.println("Enter a command (for list of commands type 'help')");
-        label:
+
+        commandInput:
         while (true) {
             String command = inpLine.nextLine();
 
@@ -67,8 +68,9 @@ class MainApp {
 
                     break;
                 case "close":
+                    myParking.close();
                     System.out.println("Thanks for work");
-                    break label;
+                    break commandInput;
 
 
                 default:

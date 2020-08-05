@@ -1,3 +1,1 @@
-18:41:50.302 [main] DEBUG com.jerrythemem.parking.Logging - Debug message
-18:41:50.304 [main] INFO  com.jerrythemem.parking.Logging - Info message
-18:41:50.304 [main] ERROR com.jerrythemem.parking.Logging - Error message
+
