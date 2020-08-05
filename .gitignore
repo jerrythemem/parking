@@ -4,4 +4,3 @@ out/*
 .gitignore
 .vscode/*
 target/*
-log.txt
