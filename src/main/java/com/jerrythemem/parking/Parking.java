@@ -66,7 +66,7 @@ public class Parking {
             place++;
         }
 
-        if (condition != "") {
+        if (!condition.equals("")) {
             return condition;
         } else {
             return "There are no cars in parking";
@@ -82,7 +82,7 @@ public class Parking {
             }
         }
 
-        if (condition != "") {
+        if (!condition.equals("")) {
             return condition;
         } else {
             return "There are no cars in parking";

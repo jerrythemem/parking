@@ -21,8 +21,7 @@ public class CarSlot {
 
 
     public long getOccupiedSince() {
-        long occupiedTime = ChronoUnit.MINUTES.between(occupiedSince, LocalTime.now());
-        return occupiedTime;
+        return ChronoUnit.MINUTES.between(occupiedSince, LocalTime.now());
     }
 
 

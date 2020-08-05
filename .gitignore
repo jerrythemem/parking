@@ -1,5 +1,5 @@
-/.idea/*
-ideaParking.iml
-/out/*
+.idea/*
+parkingIdea.iml
+out/*
 .gitignore
-/.vscode/*
+.vscode/*
