@@ -12,67 +12,75 @@ class MainApp {
         Parking myParking = new Parking(myPlaces);
 
         System.out.println("Enter a command (for list of commands type 'help')");
+        label:
         while (true) {
             String command = inpLine.nextLine();
 
-            if (command.equals("help")) {
-                System.out.println("addCar - make new car and add to parking");
-                System.out.println("freeSpace - calculate free space in parking");
-                System.out.println("removeCar - removes car from parking");
-                System.out.println("listOfCars - displays currnet cars in parking");
-                System.out.println("close - close parking");
-            
-            
-            } else if (command.equals("addCar")) {
-                System.out.println("Enter car number and owner name separated by enter");
-                String number = inpLine.nextLine();
-                String name = inpLine.nextLine();
-                Car newCar = new Car(number, name);
-                myParking.addCar(newCar);
-                System.out.println("Car added");
-                
-                
-            } else if (command.equals("freeSpace")) {
-                System.out.println(myParking.freeSpace());
-                
-                
-            } else if (command.equals("removeCar")) {
-                if (myParking.currentCars() == "There are no cars in parking") {
-                    System.out.println("There are no cars in parking");
-                
-                } else {
-                    System.out.println("Here are current cars in parking: ");
-                    System.out.println(myParking.currentCars());
+            switch (command) {
+                case "help":
+                    System.out.println("addCar - make new car and add to parking");
+                    System.out.println("freeSpace - calculate free space in parking");
+                    System.out.println("removeCar - removes car from parking");
+                    System.out.println("listOfCars - displays current cars in parking");
+                    System.out.println("close - close parking");
 
-                    System.out.println("Enter a car number");
+
+                    break;
+                case "addCar":
+                    System.out.println("Enter car number and owner name separated by enter");
                     String number = inpLine.nextLine();
+                    String name = inpLine.nextLine();
+                    Car newCar = new Car(number, name);
+                    myParking.addCar(newCar);
+                    System.out.println("Car added");
 
-                    if (myParking.removeCar(number)) {
-                        System.out.println("Thanks for visiting");
+
+                    break;
+                case "freeSpace":
+                    System.out.println(myParking.freeSpace());
+
+
+                    break;
+                case "removeCar":
+                    if (myParking.currentCars().equals("There are no cars in parking")) {
+                        System.out.println("There are no cars in parking");
+
                     } else {
-                        System.out.println("There are no cars with this car number");
+                        System.out.println("Here are current cars in parking: ");
+                        System.out.println(myParking.currentCars());
+
+                        System.out.println("Enter a car number");
+                        number = inpLine.nextLine();
+
+                        if (myParking.removeCar(number)) {
+                            System.out.println("Thanks for visiting");
+                        } else {
+                            System.out.println("There are no cars with this car number");
+                        }
                     }
-                }
-                
-                
-            } else if (command.equals("listOfCars")) {
-                System.out.println(myParking.listOfCars());
-                
-                
-            } else if (command.equals("close")) {
-                System.out.println("Thanks for work");
-                break;
-            
-            
-            } else {
-                System.out.println("Sorry, wrong command");
+
+
+                    break;
+                case "listOfCars":
+                    System.out.println(myParking.listOfCars());
+
+
+                    break;
+                case "close":
+                    System.out.println("Thanks for work");
+                    break label;
+
+
+                default:
+                    System.out.println("Sorry, wrong command");
+                    break;
             }
 
 
             System.out.println("\nWhat's next?");
         }
 
-        
+
         inpLine.close();
         inp.close();
     }
