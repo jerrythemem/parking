@@ -1,3 +1,5 @@
 /.idea/*
 ideaParking.iml
 /out/*
+.gitignore
+/.vscode/*
