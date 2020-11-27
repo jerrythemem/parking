@@ -1,6 +1,6 @@
 .idea/*
 parkingIdea.iml
 out/*
-.gitignore
+log.txt
 .vscode/*
 target/*
