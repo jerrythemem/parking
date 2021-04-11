@@ -1,2 +1,5 @@
-.idea/
-parking.iml
+.idea/*
+out/*
+log.txt
+.vscode/*
+target/*
