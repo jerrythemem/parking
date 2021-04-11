@@ -4,18 +4,18 @@ import java.util.*;
 
 class MainApp {
     public static void main(String[] args){
-        Scanner inp = new Scanner(System.in);
-        Scanner inpLine = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
         System.out.println("Hi, please type number of parking places: ");
-        int myPlaces = inp.nextInt();
+        int myPlaces = input.nextInt();
+        input.nextLine();
         Parking myParking = new Parking(myPlaces);
 
         System.out.println("Enter a command (for list of commands type 'help')");
 
         commandInput:
         while (true) {
-            String command = inpLine.nextLine();
+            String command = input.nextLine();
 
             switch (command) {
                 case "help":
@@ -29,8 +29,8 @@ class MainApp {
                     break;
                 case "addCar":
                     System.out.println("Enter car number and owner name separated by enter");
-                    String number = inpLine.nextLine();
-                    String name = inpLine.nextLine();
+                    String number = input.nextLine();
+                    String name = input.nextLine();
                     Car newCar = new Car(number, name);
                     myParking.addCar(newCar);
                     System.out.println("Car added");
@@ -51,7 +51,7 @@ class MainApp {
                         System.out.println(myParking.currentCars());
 
                         System.out.println("Enter a car number");
-                        number = inpLine.nextLine();
+                        number = input.nextLine();
 
                         if (myParking.removeCar(number)) {
                             System.out.println("Thanks for visiting");
@@ -82,8 +82,6 @@ class MainApp {
             System.out.println("\nWhat's next?");
         }
 
-
-        inpLine.close();
-        inp.close();
+        input.close();
     }
 }

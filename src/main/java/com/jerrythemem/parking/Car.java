@@ -10,11 +10,11 @@ public class Car {
         setOwnerName(newOwnerName);
     }
 
-    public void setCarNumber(String newCarNumber) {
+    private void setCarNumber(String newCarNumber) {
         this.carNumber = newCarNumber;
     }
 
-    public void setOwnerName(String newOwnerName) {
+    private void setOwnerName(String newOwnerName) {
         this.ownerName = newOwnerName;
     }
 
